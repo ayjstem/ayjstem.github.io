@@ -64,7 +64,7 @@ Soundtrack, fancy HTML/JS, and STEMazing Race minigame (gOOSE!): Alex Cen (AYJ '
 	
 	Upon entering, you stare in awe at the various decorations hanging from the ceiling. At the center is a goose model, hanging on a thin thread, chasing a fossilized //Pterodactylus antiquus//.
 	
-	&quot;In the main hall, we showcase our past events and challenge winners. In fact, you can even relive these events yourself! Unfortunately, you won&#39;t get a prize because the time period ended.&quot;
+	&quot;In the main hall, we showcase our past events and challenge winners. In fact, you can even relive these events yourself!&quot;
 	
 	You nod, zooming out from the worker&#39;s speech as you try to find where the keyword is hidden.
 	
@@ -74,7 +74,7 @@ Soundtrack, fancy HTML/JS, and STEMazing Race minigame (gOOSE!): Alex Cen (AYJ '
 	
 	[[&#39;What does STEM stand for?&#39;-&gt;Interest]]
 	
-	[[&#39;Why is the goose chasing that pterodactyl?&#39;-&gt;Curiousity]]</tw-passagedata><tw-passagedata pid="3" name="Persuation" tags="" position="827,208" size="100,100">The worker sighs.
+	</tw-passagedata><tw-passagedata pid="3" name="Persuation" tags="" position="827,208" size="100,100">The worker sighs.
 	
 	&quot;Look, I&#39;m not going to scam you, I&#39;m 100% certified to work here. Don&#39;t believe me? Here&#39;s my work ID.&quot; 
 	
@@ -95,23 +95,7 @@ Soundtrack, fancy HTML/JS, and STEMazing Race minigame (gOOSE!): Alex Cen (AYJ '
 	
 	[[&#39;Yes please.&#39;-&gt;Map]]
 	
-	[[&#39;No, I&#39;m fine, I can do this by myself. I&#39;m pretty good with directions.&#39;-&gt;Lost]]</tw-passagedata><tw-passagedata pid="5" name="Curiousity" tags="" position="1131,252" size="100,100">The worker chuckles.
-	
-	&quot;Well, it&#39;s just something our executive team thought of. They claim it is historically accurate and that &#39;since birds are basically dinosaurs, geese chasing pterodactyls are possible&#39;.&quot;
-	
-	You think back to the Untitled Goose Game. 
-	
-	&#39; &#39;&#39;Peace was never an option,&#39;&#39; &#39; you mutter. 
-	
-	The worker stops talking and gives you a look.
-	
-	&quot;The hint to getting the keyword is that &#39;&#39;it is hidden in one of the QR codes around the building&#39;&#39;.&quot;
-	
-	Your eyes light up from the clue and notice the map in the hands of the worker.
-	
-	[[&#39;May I use that map?&#39;-&gt;Map]]
-	
-	[[You thank the worker and run off. Who needs a map when exploring the unknown is faster?-&gt;Lost]]</tw-passagedata><tw-passagedata pid="6" name="Interest" tags="" position="1075,129" size="100,100">&quot;Good question. STEM stands for Science, Technology, Engineering and Mathematics. While it might seem like STEM is only present in the subjects they represent, that is not true. Here at STEM Clubhouse, we aim to show how STEM can be found and linked to other subjects.&quot;
+	[[&#39;No, I&#39;m fine, I can do this by myself. I&#39;m pretty good with directions.&#39;-&gt;Lost]]</tw-passagedata><tw-passagedata pid="6" name="Interest" tags="" position="1075,129" size="100,100">&quot;Good question. STEM stands for Science, Technology, Engineering and Mathematics. While it might seem like STEM is only present in the subjects they represent, that is not true. Here at STEM Clubhouse, we aim to show how STEM can be found and linked to other subjects.&quot;
 	
 	&#39;Interesting.&#39; You comment as you watch people file in and out of rooms. Everyone here seems to be enjoying a fun time and you remember you&#39;re part of a race. 
 	
@@ -138,9 +122,7 @@ Soundtrack, fancy HTML/JS, and STEMazing Race minigame (gOOSE!): Alex Cen (AYJ '
 	
 	[[A funky sound is coming from the concert hall. Perhaps the keyword is in the sheet music?-&gt;Music]]
 	
-	[[There must be something I missed in the main hall, let&#39;s go back and check.-&gt;Hall]]</tw-passagedata><tw-passagedata pid="10" name="Mathematics" tags="" position="1787,356" size="100,100">After taking the helical staircase, you struggle with the door. It has a grid design and a goose handle.
-	
-	&#39;Why is it not opening?&#39; You grit your teeth in frustration and notice a sign.
+	[[There must be something I missed in the main hall, let&#39;s go back and check.-&gt;Hall]]</tw-passagedata><tw-passagedata pid="10" name="Mathematics" tags="" position="1787,356" size="100,100">After taking the helical staircase, you struggle with the door. You notice its grid design, goose handle, and the sign plastered on it.
 	
 	THE DOOR OPENS WHEN YOU DIRECT THE HANDLE IN THE DIRECTION X[1, +INFINITY).
 	
@@ -187,7 +169,7 @@ Soundtrack, fancy HTML/JS, and STEMazing Race minigame (gOOSE!): Alex Cen (AYJ '
 	
 	[[The stage of the Art/Drama exhibit is lit. Maybe the keyword is there?-&gt;Dance and Drama]]
 	
-	[[The retro aesthetic of the Computers and Technology exhibit looks stunning. Could the keyword be on a neon sign there?-&gt;Computers and Technology]]
+	[[The retro aesthetic of the Computers and Technology exhibit looks stunning. Could the keyword be in there?-&gt;Computers and Technology]]
 	
 	[[A funky sound is coming from the concert hall. Perhaps the keyword is in the sheet music?-&gt;Music]]
 	
@@ -238,7 +220,7 @@ Soundtrack, fancy HTML/JS, and STEMazing Race minigame (gOOSE!): Alex Cen (AYJ '
 	
 	It&#39;s the best to listen to music as you play this game (we made a custom soundtrack!), but in the end, it&#39;s your choice.
 	<p><div style ="float:left;" onclick = "initiateLoop()">[[Proceed with audio. -&gt;Welcome]]</div> 
-	<div style = "float:left" id = "no_audio">[[Proceed without audio. -&gt;Welcome]]</div></tw-passagedata>
+	<div style = "float:left" id = "no_audio" onclick ="try{(function(){context.suspend();})()}catch{console.log('no audio for today:(')}">[[Proceed without audio. -&gt;Welcome]]</div></tw-passagedata>
 	</p>
 	<!-- AUDIO LOGIC-->
 	<script src = "logic.js"></script>
@@ -250,8 +232,6 @@ Soundtrack, fancy HTML/JS, and STEMazing Race minigame (gOOSE!): Alex Cen (AYJ '
 	The mirror reflects the bottom of the goose model --- the same one that you first saw when the worker greeted you.
 	
 	Is that... an arrow?
-	
-	You dash under the model and look in the direction of the arrow.
 	
 	You notice a QR code on the plate the arrow is pointing at. 
 	

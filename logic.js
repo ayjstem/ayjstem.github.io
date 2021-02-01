@@ -1,14 +1,25 @@
 /******
-LOOPIFY UNDER MIT LICENSE 
-MODIFIED From https://github.com/veltman/loopify
+Under the MIT License
+Modified from https://github.com/veltman/loopify
+ 
+Copyright (c) 2015 veltman
+Copyright (c) 2021 Alex Cen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions.
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-alreadyPlaying = false;
+
+alreadyPlaying = false; /*Check if user already clicked audio control*/
 backupLoop = new Audio('audio/intro-final.mp3');
 function initiateLoop() {
     if (!alreadyPlaying){
       function loopify(uri,cb) {
       console.log('Trying to play audio');
         try {
+        /* Tries to use webAudioAPI to create a context*/
         context = new (window.AudioContext || window.webkitAudioContext)(),
             request = new XMLHttpRequest();
         } catch (e) {
@@ -100,16 +111,19 @@ function initiateLoop() {
         }
             loop.play();
 
+            /* Check how things are going */
             if(context.state=="running"){
               alreadyPlaying = true;
               console.log('Music by Alex (@mlpegasus on instagram)');
             } else {
                 alert("You're using a browser that doesn't support background music.");
+                /*This probably won't work either but it's worth a shot*/
                 backupLoop.addEventListener('ended', function() {
                   this.currentTime = 0;
                   this.play();
-              }, false);
+                }, false);
                 backupLoop.play();
+              
             }
             
           /* Add listener to stop loop, or use context.suspend(); to suspend audio
