@@ -14,6 +14,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 alreadyPlaying = false; /*Check if user already clicked audio control*/
 backupLoop = new Audio('audio/intro-final.mp3');
+var source;
+var gainNode;
 function initiateLoop() {
     if (!alreadyPlaying){
       function loopify(uri,cb) {
@@ -52,8 +54,6 @@ function initiateLoop() {
 
         function success(buffer) {
 
-          var source;
-
           function play() {
 
             // Stop if it's already playing
@@ -61,7 +61,10 @@ function initiateLoop() {
 
             // Create a new source (can't replay an existing source)
             source = context.createBufferSource();
-            source.connect(context.destination);
+            gainNode = context.createGain();
+            source.connect(gainNode);
+            gainNode.connect(context.destination);
+            gainNode.gain.setValueAtTime(1000, context.currentTime);
 
             // Set the buffer
             source.buffer = buffer;
@@ -117,12 +120,17 @@ function initiateLoop() {
               console.log('Music by Alex (@mlpegasus on instagram)');
             } else {
                 alert("You're using a browser that doesn't support background music.");
+                
                 /*This probably won't work either but it's worth a shot*/
-                backupLoop.addEventListener('ended', function() {
-                  this.currentTime = 0;
-                  this.play();
-                }, false);
-                backupLoop.play();
+                try {
+                  backupLoop.addEventListener('ended', function() {
+                    this.currentTime = 0;
+                    this.play();
+                  }, false);
+                  backupLoop.play();
+                } catch {
+                  console.log('nothing works :(');
+                }
               
             }
             
@@ -132,6 +140,8 @@ function initiateLoop() {
           });
           */
       }
+    } else if (context.state != "running"){
+      context.resume();
     }
 
   }
