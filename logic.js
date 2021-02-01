@@ -64,7 +64,7 @@ function initiateLoop() {
             gainNode = context.createGain();
             source.connect(gainNode);
             gainNode.connect(context.destination);
-            gainNode.gain.setValueAtTime(1000, context.currentTime);
+            gainNode.gain.setValueAtTime(0.3, context.currentTime);
 
             // Set the buffer
             source.buffer = buffer;
