@@ -3,17 +3,17 @@ LOOPIFY UNDER MIT LICENSE
 MODIFIED From https://github.com/veltman/loopify
 */
 alreadyPlaying = false;
+backupLoop = new Audio('audio/intro-final.mp3');
 function initiateLoop() {
     if (!alreadyPlaying){
-      alreadyPlaying = true;
-      console.log('soothing loop on :) Music by Alex (@mlpegasus on instagram)');
       function loopify(uri,cb) {
-      
+      console.log('Trying to play audio');
         try {
-        var context = new (window.AudioContext || window.webkitAudioContext)(),
+        context = new (window.AudioContext || window.webkitAudioContext)(),
             request = new XMLHttpRequest();
         } catch (e) {
-          backupLoop = new Audio('audio/intro-final.mp3');
+          console.log('Playing w/o webAudioAPI');
+          /* If webAudioAPI not supported, do it manually */
           backupLoop.addEventListener('ended', function() {
               this.currentTime = 0;
               this.play();
@@ -91,16 +91,28 @@ function initiateLoop() {
       }
 
       /* Initiate beginning audio */
-      loopify("audio/intro-final.mp3",ready);
 
+      loopify("audio/intro-final.mp3",ready);
+      
       function ready(err,loop){
         if (err) {
           console.warn(err);
         }
+            loop.play();
 
-          loop.play();
-
-          /* Add listener to stop loop
+            if(context.state=="running"){
+              alreadyPlaying = true;
+              console.log('Music by Alex (@mlpegasus on instagram)');
+            } else {
+                alert("You're using a browser that doesn't support background music.");
+                backupLoop.addEventListener('ended', function() {
+                  this.currentTime = 0;
+                  this.play();
+              }, false);
+                backupLoop.play();
+            }
+            
+          /* Add listener to stop loop, or use context.suspend(); to suspend audio
           document.getElementById("#INSERT-ID-HERE").addEventListener("click",function(){
             loop.stop();
           });
@@ -108,4 +120,14 @@ function initiateLoop() {
       }
     }
 
+  }
+/* END OF LOOPIFY STUFF */
+
+/* Toggle background music*/
+  function toggleBackLoop(){
+    if (context.state == "running"){
+      context.suspend();
+    } else {
+      context.resume();
+    }
   }
