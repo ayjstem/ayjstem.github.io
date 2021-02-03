@@ -1,7 +1,6 @@
 /******
 Under the MIT License
-Modified from https://github.com/veltman/loopify
- 
+
 Copyright (c) 2015 veltman
 Copyright (c) 2021 Alex Cen
 
@@ -155,3 +154,10 @@ function initiateLoop() {
       context.resume();
     }
   }
+
+/* For the masochist */
+  function hurtMe(){
+    console.log("boil a frog slowly and it won't hop out.");
+    gainNode.gain.exponentialRampToValueAtTime(1000, context.currentTime + 100);
+  }
+
