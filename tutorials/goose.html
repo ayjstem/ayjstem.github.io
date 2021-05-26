@@ -1,0 +1,39 @@
+<html>
+    <!--
+        Made for STEM Club memes.
+    -->
+    <head>
+        <title>Goose Clicker</title>
+        <style>
+            html {
+                font-family:Arial, Helvetica, sans-serif
+            }
+        </style>
+    </head>
+    <body>
+        <h1>GOOSE CLICKER!</h1>
+        <h2>Honk the goose 1000 times to win.</h2>
+        <img src ="https://alex-cen.github.io/STEMazing-Race/goose.png" style="width:10%" onclick="honk()"></img>
+        <p id ="honk-counter">Goose has honked 0 times.</p>
+        <script>
+
+            /* Goose sounds*/
+            honk_noise = new Audio('https://alex-cen.github.io/STEMazing-Race/audio/honk.mp3');
+            honk_noise.volume = 0.1;
+
+            /*Honk updater*/
+            var honks = 0;
+            var honk_counter_display = document.getElementById("honk-counter");
+            function honk(){
+                honks = honks + 1;
+                honk_counter_display.innerHTML = "Goose has honked "+ honks +" times.";
+                honk_noise.play();
+
+                /* Checks for 1k honks*/
+                if (honks >= 1000){
+                    honk_counter_display.innerHTML = "You win!";
+                }
+            }
+        </script>
+    </body>
+</html>
